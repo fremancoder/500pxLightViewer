@@ -1,0 +1,54 @@
+<div>
+	<div class="row" ng-show="photoDetails.photo.height > photoDetails.photo.width">
+		<div class="col-lg-6">
+			<img ng-src="{{photoDetails.photo.image_url}}" width="550px"/>
+		</div>
+		<div class="col-lg-6">
+			<h3 style="display: inline;">{{photoDetails.photo.name}}</h3>
+			<blockquote>
+				<small>description:</small>
+				<p>{{photoDetails.photo.description}}</p>
+			</blockquote>
+			<div class="well">Highest pulse: {{photoDetails.photo.highest_rating}}</div>
+			<div class="well" style="background: #93c54b;">
+				Nrb. views: {{photoDetails.photo.times_viewed}}
+				</br>
+				Nrb. likes: {{photoDetails.photo.votes_count}}
+				</br>
+				Nrb. favorites: {{photoDetails.photo.favorites_count}}
+			</div>
+			<div class="well"">
+				comments:
+				</br>
+				<ul>
+					<li ng-repeat="comment in photoDetails.comments">{{comment.body}} <i>({{comment.user.firstname}} {{comment.user.lastname}})</i></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div ng-show="photoDetails.photo.height <= photoDetails.photo.width">
+		<h3>{{photoDetails.photo.name}}</h3>
+		<img ng-src="{{photoDetails.photo.image_url}}"/>
+		<div class="row">
+			<blockquote>
+				<small>description:</small>
+				<p>{{photoDetails.photo.description}}</p>
+			</blockquote>
+			<div class="well">Highest pulse: {{photoDetails.photo.highest_rating}}</div>
+			<div class="well" style="background: #93c54b;">
+				Nrb. views: {{photoDetails.photo.times_viewed}}
+				</br>
+				Nrb. likes: {{photoDetails.photo.votes_count}}
+				</br>
+				Nrb. favorites: {{photoDetails.photo.favorites_count}}
+			</div>
+			<div class="well"">
+				comments:
+				</br>
+				<ul>
+					<li ng-repeat="comment in photoDetails.comments">{{comment.body}} <i>({{comment.user.firstname}} {{comment.user.lastname}})</i></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
