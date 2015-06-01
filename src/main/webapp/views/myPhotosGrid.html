@@ -1,0 +1,53 @@
+<div>
+	<div class="btn-group open">
+	  <a class="btn btn-success">Sort - {{sortOrder}}</a>
+	  <a class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span></a>
+	  <ul class="dropdown-menu">
+	    <li><a href="#myPhotoGrid/created_at">Created at</a></li>
+	    <li><a href="#myPhotoGrid/highest_rating">Highest pulse</a></li>
+	    <li class="divider"></li>
+	    <li><a href="#myPhotoGrid/times_viewed">Times viewed</a></li>
+	    <li><a href="#myPhotoGrid/votes_count">Votes count</a></li>
+	    <li><a href="#myPhotoGrid/favorites_count">Favorites count</a></li>
+	  </ul>
+	</div>	
+
+	<form name="my500pxPhotoList" >
+		</br>
+		<div>
+			<div>
+				<table class="table">
+					<tbody>
+						<tr ng-repeat="cols in rows" ng-show="!error">
+							<td ng-repeat = "photo in cols">
+								<div class="row" ng-show="photo">
+									<div class="col-lg-6">
+										<a ng-click="showDetails(photo.id)" ><img ng-src="{{photo.image_url}}" height="180px"/></a>
+									</div>
+									<div class="col-lg-6">
+										<div class="well">
+											Highest pulse: {{photo.highest_rating}}
+											</br>
+											</br>
+											Nrb. views: {{photo.times_viewed}}
+											</br>
+											Nrb. likes: {{photo.votes_count}}
+											</br>
+											Nrb. favorites: {{photo.favorites_count}}
+											</br>
+											</br>
+											{{photo.created_at | date:'MM/dd/yyyy hh:mm'}}
+										</div>
+									</div>
+								</div>								
+							</td>
+						</tr>
+						<tr ng-show="error">
+							<td colspan="7">{{error}}</td>						
+						</tr>						
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</form>	
+</div>

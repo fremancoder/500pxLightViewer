@@ -18,6 +18,11 @@
 						templateUrl: "views/myPhotos.html",
 						controller: "MyPhotoListController"
 					})
+			.when("/myPhotoGrid/:sortOrder", 
+					{
+						templateUrl: "views/myPhotosGrid.html",
+						controller: "MyPhotoGridController"
+					})
 			.when("/myPhotoDetails/:photoid", 
 					{
 						templateUrl: "views/myPhotoDetails.html",

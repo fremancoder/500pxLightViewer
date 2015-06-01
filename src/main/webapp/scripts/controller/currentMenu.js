@@ -2,18 +2,19 @@
 	
 	var app = angular.module("my500pxViewer");
 	
-	var MyMenuController = function($location, $scope) {
+	var MyMenuController = function($location, $scope, $rootScope) {
 		
-		$scope.switch = function(type){
-			if(type == 'photoList') {
-				$scope.currentMenuMyPhotos = false;
+		$scope.isMenu = function(menu){
+			console.log($rootScope.menuOption);
+			if($rootScope.menuOption == menu) {
+				return true;
 			} else {
-				$scope.currentMenuMyPhotos = true;
+				return false;
 			}
 		}
 		
 	}	
 	
-	app.controller("MyMenuController", ["$location", "$scope", MyMenuController]);
+	app.controller("MyMenuController", ["$location", "$scope", "$rootScope", MyMenuController]);
 	
 }());
