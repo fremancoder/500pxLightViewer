@@ -2,7 +2,14 @@
 	
 	var app = angular.module("my500pxViewer");
 	
-	var MyPhotoListController = function($scope, $http, $log, $location, $rootScope) {
+	var MyPhotoListController = function($scope, $http, $log, $location, $rootScope, $cookieStore) {
+		
+		$scope.switchUser = function(){
+			console.log('switchuser: ' + $scope.formUserName);
+			$rootScope.globals = { currentUser: { username: $scope.formUserName } };
+            $cookieStore.put('globals', $rootScope.globals);			
+			search(1);
+		};
 		
 		var onPhotoComplete = function(response){
 			if(response.data.current_page == 1){
@@ -33,6 +40,6 @@
 		search(1);
 	}
 	
-	app.controller("MyPhotoListController", ["$scope", "$http", "$log", "$location", "$rootScope", MyPhotoListController]);
+	app.controller("MyPhotoListController", ["$scope", "$http", "$log", "$location", "$rootScope", "$cookieStore", MyPhotoListController]);
 	
 }());

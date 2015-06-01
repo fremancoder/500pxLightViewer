@@ -23,6 +23,16 @@
 						templateUrl: "views/myPhotosGrid.html",
 						controller: "MyPhotoGridController"
 					})
+			.when("/popularGrid/:sortOrder", 
+					{
+						templateUrl: "views/popularGrid.html",
+						controller: "PopularGridController"
+					})
+			.when("/popularGridCat/:categoryName", 
+					{
+						templateUrl: "views/popularGrid.html",
+						controller: "PopularGridController"
+					})
 			.when("/myPhotoDetails/:photoid", 
 					{
 						templateUrl: "views/myPhotoDetails.html",

@@ -2,7 +2,21 @@
 	
 	var app = angular.module("my500pxViewer");
 	
-	var MyPhotoGridController = function($scope, $http, $log, $location, $rootScope, $routeParams) {
+	var MyPhotoGridController = function($scope, $http, $log, $location, $rootScope, $routeParams, $cookieStore) {
+		
+		$scope.switchUser = function(){
+			$rootScope.globals = { currentUser: { username: $scope.formUserName } };
+            $cookieStore.put('globals', $rootScope.globals);			
+			search(1);
+		};
+		
+		$scope.isSort = function(sortorder){
+			if($scope.sortOrder == sortorder) {
+				return true;
+			} else {
+				return false;
+			}
+		}
 		
 		var onPhotoComplete = function(response){
 			if(response.data.current_page == 1){
@@ -53,7 +67,7 @@
 					$scope.sortOrder = 'TIMES VIEWED';
 					break;
 				case 'votes_count':
-					$scope.sortOrder = 'VOTES COUNTED';
+					$scope.sortOrder = 'VOTES COUNT';
 					break;
 				case 'favorites_count':
 					$scope.sortOrder = 'FAVORITES COUNT';
@@ -78,6 +92,6 @@
 		search(1);
 	}
 	
-	app.controller("MyPhotoGridController", ["$scope", "$http", "$log", "$location", "$rootScope", "$routeParams", MyPhotoGridController]);
+	app.controller("MyPhotoGridController", ["$scope", "$http", "$log", "$location", "$rootScope", "$routeParams", "$cookieStore", MyPhotoGridController]);
 	
 }());

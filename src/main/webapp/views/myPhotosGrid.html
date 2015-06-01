@@ -1,18 +1,22 @@
 <div>
-	<div class="btn-group open">
-	  <a class="btn btn-success">Sort - {{sortOrder}}</a>
-	  <a class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span></a>
-	  <ul class="dropdown-menu">
-	    <li><a href="#myPhotoGrid/created_at">Created at</a></li>
-	    <li><a href="#myPhotoGrid/highest_rating">Highest pulse</a></li>
-	    <li class="divider"></li>
-	    <li><a href="#myPhotoGrid/times_viewed">Times viewed</a></li>
-	    <li><a href="#myPhotoGrid/votes_count">Votes count</a></li>
-	    <li><a href="#myPhotoGrid/favorites_count">Favorites count</a></li>
-	  </ul>
-	</div>	
-
 	<form name="my500pxPhotoList" >
+		<div class="btn-group btn-sm open">
+		  <a class="btn btn-success btn-sm">Sort - {{sortOrder}}</a>
+		  <a class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span></a>
+		  <ul class="dropdown-menu">
+		    <li><a href="#myPhotoGrid/highest_rating">Highest pulse</a></li>
+		    <li class="divider"></li>
+		    <li><a href="#myPhotoGrid/times_viewed">Times viewed</a></li>
+		    <li><a href="#myPhotoGrid/votes_count">Votes count</a></li>
+		    <li><a href="#myPhotoGrid/favorites_count">Favorites count</a></li>
+		    <li class="divider"></li>
+		    <li><a href="#myPhotoGrid/created_at">Created at</a></li>
+		  </ul>
+		</div>	
+		<label style="padding-left: 1.5em;">userName:</label>
+		<input type="text" name="userName" ng-model="formUserName"/>
+		<button type="submit" ng-click="switchUser()" class="btn btn-success btn-sm">Switch user</button>		  
+		</br>
 		</br>
 		<div>
 			<div>
@@ -26,17 +30,22 @@
 									</div>
 									<div class="col-lg-6">
 										<div class="well">
-											Highest pulse: {{photo.highest_rating}}
+											<i ng-show="isSort('HIGHEST PULSE')">Highest pulse: {{photo.highest_rating}}</i>
+											<span ng-show="!isSort('HIGHEST PULSE')">Highest pulse: {{photo.highest_rating}}</span>
 											</br>
 											</br>
-											Nrb. views: {{photo.times_viewed}}
+											<i ng-show="isSort('TIMES VIEWED')">Nbr. views: {{photo.times_viewed}}</i>
+											<span ng-show="!isSort('TIMES VIEWED')">Nbr. views: {{photo.times_viewed}}</span>
 											</br>
-											Nrb. likes: {{photo.votes_count}}
+											<i ng-show="isSort('VOTES COUNT')">Nbr. likes: {{photo.votes_count}}</i>
+											<span ng-show="!isSort('VOTES COUNT')">Nbr. likes: {{photo.votes_count}}</span>
 											</br>
-											Nrb. favorites: {{photo.favorites_count}}
+											<i ng-show="isSort('FAVORITES COUNT')">Nbr. favorites: {{photo.favorites_count}}</i>
+											<span ng-show="!isSort('FAVORITES COUNT')">Nbr. favorites: {{photo.favorites_count}}</span>
 											</br>
 											</br>
-											{{photo.created_at | date:'MM/dd/yyyy hh:mm'}}
+											<i ng-show="isSort('CREATED AT')">{{photo.created_at | date:'MM/dd/yyyy HH:mm'}}</i>
+											<span ng-show="!isSort('CREATED AT')">{{photo.created_at | date:'MM/dd/yyyy HH:mm'}}</span>
 										</div>
 									</div>
 								</div>								

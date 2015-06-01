@@ -1,0 +1,83 @@
+<div>
+	<form name="my500pxPhotoList" >
+		<div class="btn-group btn-sm open">
+		  <a class="btn btn-success btn-sm">Sort - {{sortOrder}}</a>
+		  <a class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span></a>
+		  <ul class="dropdown-menu">
+		    <li><a href="#popularGrid/rating">Current pulse</a></li>
+		    <li class="divider"></li>
+		    <li><a href="#popularGrid/times_viewed">Times viewed</a></li>
+		    <li><a href="#popularGrid/votes_count">Votes count</a></li>
+		    <li><a href="#popularGrid/favorites_count">Favorites count</a></li>
+		    <li class="divider"></li>
+		    <li><a href="#popularGrid/created_at">Created at</a></li>
+		  </ul>
+		</div>	
+		<div class="btn-group btn-sm open">
+		  <a class="btn btn-success btn-sm">Category - {{categoryName}}</a>
+		  <a class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span></a>
+		  <ul class="dropdown-menu">
+		    <li><a href="#popularGridCat/all">All</a></li>
+		    <li class="divider"></li>
+		    <li><a href="#popularGridCat/people">People</a></li>
+		    <li><a href="#popularGridCat/fashion">Fashion</a></li>
+		    <li><a href="#popularGridCat/nude">Nude</a></li>
+		    <li class="divider"></li>
+		    <li><a href="#popularGridCat/landscapes">Landscapes</a></li>
+		    <li><a href="#popularGridCat/nature">Nature</a></li>
+		    <li class="divider"></li>
+		    <li><a href="#popularGridCat/blackandwhite">Black and White</a></li>
+		    <li><a href="#popularGridCat/abstract">Abstract</a></li>
+		  </ul>
+		</div>	
+		</br>
+		</br>
+		</br>
+		<div>
+			<div>
+				<table class="table">
+					<tbody>
+						<tr ng-repeat="cols in rows" ng-show="!error">
+							<td ng-repeat = "photo in cols">
+								<div class="row" ng-show="photo">
+									<div class="col-lg-6">
+										<a ng-click="showDetails(photo.id)" ><img ng-src="{{photo.image_url}}" height="180px"/></a>
+									</div>
+									<div class="col-lg-6">
+										<div class="well">
+											<i ng-show="isSort('CURRENT PULSE')">Current pulse: {{photo.rating}}</i>
+											<span ng-show="!isSort('CURRENT PULSE')">Current pulse: {{photo.rating}}</span>
+											</br>
+											</br>
+											<i ng-show="isSort('TIMES VIEWED')">Nbr. views: {{photo.times_viewed}}</i>
+											<span ng-show="!isSort('TIMES VIEWED')">Nbr. views: {{photo.times_viewed}}</span>
+											</br>
+											<i ng-show="isSort('VOTES COUNT')">Nbr. likes: {{photo.votes_count}}</i>
+											<span ng-show="!isSort('VOTES COUNT')">Nbr. likes: {{photo.votes_count}}</span>
+											</br>
+											<i ng-show="isSort('FAVORITES COUNT')">Nbr. favorites: {{photo.favorites_count}}</i>
+											<span ng-show="!isSort('FAVORITES COUNT')">Nbr. favorites: {{photo.favorites_count}}</span>
+											</br>
+											</br>
+											<i ng-show="isSort('CREATED AT')">{{photo.created_at | date:'MM/dd/yyyy HH:mm'}}</i>
+											<span ng-show="!isSort('CREATED AT')">{{photo.created_at | date:'MM/dd/yyyy HH:mm'}}</span>
+										</div>
+									</div>
+								</div>								
+							</td>
+						</tr>
+						<tr ng-show="error">
+							<td colspan="7">{{error}}</td>						
+						</tr>						
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div>
+			<button type="submit" ng-click="pageSwitch(currentPage-1)" ng-show="currentPage > 1" class="previous btn btn-info">← Previous</button>
+			<button ng-show="currentPage <= 1" class="previous btn btn-info disabled">← Previous</a>
+			<button type="submit" ng-click="pageSwitch(currentPage+1)" ng-show="currentPage < totalPages" class="next btn btn-info" style="float: right;">Next →</button>
+			<button ng-show="currentPage >= totalPages" class="next btn btn-info disabled" style="float: right;">Next →</button>
+		</div>
+	</form>	
+</div>

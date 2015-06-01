@@ -5,7 +5,6 @@
 	var MyMenuController = function($location, $scope, $rootScope) {
 		
 		$scope.isMenu = function(menu){
-			console.log($rootScope.menuOption);
 			if($rootScope.menuOption == menu) {
 				return true;
 			} else {
