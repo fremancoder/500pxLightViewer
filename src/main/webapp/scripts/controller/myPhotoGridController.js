@@ -5,8 +5,6 @@
 	var MyPhotoGridController = function($scope, $http, $log, $location, $rootScope, $routeParams, $cookieStore) {
 		
 		$scope.switchUser = function(){
-			$rootScope.globals = { currentUser: { username: $scope.formUserName } };
-            $cookieStore.put('globals', $rootScope.globals);			
 			search(1);
 		};
 		

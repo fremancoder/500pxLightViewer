@@ -5,9 +5,6 @@
 	var MyPhotoListController = function($scope, $http, $log, $location, $rootScope, $cookieStore) {
 		
 		$scope.switchUser = function(){
-			console.log('switchuser: ' + $scope.formUserName);
-			$rootScope.globals = { currentUser: { username: $scope.formUserName } };
-            $cookieStore.put('globals', $rootScope.globals);			
 			search(1);
 		};
 		
