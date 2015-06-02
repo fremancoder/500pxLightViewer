@@ -4,10 +4,6 @@
 	
 	var MyPhotoListController = function($scope, $http, $log, $location, $rootScope, $cookieStore) {
 		
-		$scope.switchUser = function(){
-			search(1);
-		};
-		
 		var onPhotoComplete = function(response){
 			if(response.data.current_page == 1){
 				$scope.myPhotos = response.data.photos;

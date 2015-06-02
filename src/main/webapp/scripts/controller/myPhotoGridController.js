@@ -4,10 +4,6 @@
 	
 	var MyPhotoGridController = function($scope, $http, $log, $location, $rootScope, $routeParams, $cookieStore) {
 		
-		$scope.switchUser = function(){
-			search(1);
-		};
-		
 		$scope.isSort = function(sortorder){
 			if($scope.sortOrder == sortorder) {
 				return true;

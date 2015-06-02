@@ -2,7 +2,7 @@
 	
 	var app = angular.module("my500pxViewer");
 	
-	var MyMenuController = function($location, $scope, $rootScope) {
+	var MyMenuController = function($location, $scope, $rootScope, $route) {
 		
 		$scope.isMenu = function(menu){
 			if($rootScope.menuOption == menu) {
@@ -12,8 +12,12 @@
 			}
 		}
 		
+		$scope.reloadRoute = function() {
+			   $route.reload();
+		}
+		
 	}	
 	
-	app.controller("MyMenuController", ["$location", "$scope", "$rootScope", MyMenuController]);
+	app.controller("MyMenuController", ["$location", "$scope", "$rootScope", "$route", MyMenuController]);
 	
 }());
